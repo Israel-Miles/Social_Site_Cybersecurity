@@ -1,5 +1,7 @@
 <?php
     require 'config/config.php';
+    require 'includes/form_handlers/register_handler.php';
+    require 'includes/form_handlers/login_handler.php';
 
     $query = mysqli_query($con, "INSERT INTO test VALUES(NULL, 'Izzy')");
 ?>

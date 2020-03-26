@@ -1,9 +1,9 @@
 <?php
 if(isset($_POST['login_button'])) {
-    $email = filter_var($_POST['log_email'], FILTER_SANITIZE_EMAIL);
+    $email = filter_var($_POST['login_email'], FILTER_SANITIZE_EMAIL);
 
-    $_SESSION['log_email'] = $email;
-    $password = md5($_POST['log_password']);
+    $_SESSION['login_email'] = $email;
+    $password = md5($_POST['login_password']);
 
     $check_database_query = mysqli_query($con, "SELECT * FROM users WHERE email='$email' AND password='$password'");
     $check_login_query = $check_database_query->num_rows;
@@ -15,6 +15,9 @@ if(isset($_POST['login_button'])) {
         $_SESSION['username'] = $username;
         header("Location: index.php");
         exit();
+    }
+    else {
+        array_push($error_array, "Email or password was incorrect<br>");
     }
 }
 
