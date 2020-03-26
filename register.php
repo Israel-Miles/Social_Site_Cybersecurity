@@ -13,6 +13,14 @@
 </head>
 <body>
     <form action="register.php" method="POST">
+        <input type="email" name="login_email" placeholder="Email Address">
+        <br>
+        <input type="password" name="login_password" placeholder="Password">
+        <br>
+        <input type="submit" name="login_button" value="Login">
+    </form>
+
+    <form action="register.php" method="POST">
         <input type="text" name="reg_first_name" placeholder="First Name" required
             value="<?php 
                 if(isset($_SESSION['reg_first_name'])) {
