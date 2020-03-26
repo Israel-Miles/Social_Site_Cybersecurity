@@ -1,6 +1,6 @@
 <?php
     include("includes/header.php");
-    session_destroy();
+    // session_destroy();
 ?>
         <div class="user_details column">
             <a href="#"><img src="<?php echo $user['profile_pic']; ?>" alt=""></a>
@@ -18,6 +18,14 @@
                     echo "Likes: " . $user['num_likes'];
                 ?>
             </div>
+        </div>
+
+        <div class="main_column column">
+            <form class="post_form" action="index.php" method="POST">
+                <textarea name="post_text" id="post_text" placeholder="Got something to say?"></textarea>
+                <input type="submit" name="post" id="post_button" value="Post">
+                <hr>
+            </form>
         </div>
     </div>
 </body>
