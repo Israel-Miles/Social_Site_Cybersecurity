@@ -38,6 +38,19 @@
         $password2 = $_POST['reg_password2'];
 
         $date = date("Y-m-d");
+
+        if($email == $email2) {
+            // Check if emails in valid format
+            if(filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                $email = filter_var($email, FILTER_VALIDATE_EMAIL);
+            }
+            else {
+                echo "Invalid format";
+            }
+        }
+        else {
+            echo "Emails don't match";
+        }
     }
 ?>
 
