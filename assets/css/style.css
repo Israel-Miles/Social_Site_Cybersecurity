@@ -1,0 +1,54 @@
+@font-face {
+    font-family: 'IBMPlexSans-Regular';
+    src: url("../fonts/IBMPlexSans-Regular.ttf");
+}
+
+@font-face {
+    font-family: 'IBMPlexSerif-Regular';
+    src: url("../fonts/IBMPlexSerif-Regular.ttf");
+}
+
+body {
+    line-height: 17px;
+}
+
+.top_bar {
+    width: 100%;
+    min-width: 1050px;
+    height: 40px;
+    background-color: #2c3e50;
+    border-bottom: 0.25em solid white;
+    margin: 0 0 10px 0;
+    display: inline-flex;
+}
+
+.logo a {
+    font-family: 'IBMPlexSerif-Regular', sans-serif;
+    margin-left: 10px;
+    font-size: 250%;
+    position: relative;
+    top: 9px;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+nav {
+    float: right;
+    right: 1px;
+    position: absolute;
+    margin: 10px;
+}
+
+nav a {
+    position: relative;
+    color: white;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+nav a:hover {
+    border-bottom: 7px solid white;
+    color: white;
+}
