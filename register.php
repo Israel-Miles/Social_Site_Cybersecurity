@@ -16,6 +16,19 @@
     <script src="assets/js/register.js"></script>
 </head>
 <body>
+    <?php
+        if(isset($_POST['register_button'])) {
+            echo '
+                <script>
+                    $(document).ready(function() {
+                        $("#first").hide();
+                        $("#second").show();
+                    });
+                </script>
+            ';
+        }
+    ?>
+
     <div class="wrapper">
         <div class="login_box">
             <div class="login_header">
@@ -35,7 +48,7 @@
                     <br>
                     <input type="password" name="login_password" placeholder="Password">
                     <br>
-                    <?php if(in_array("Email or password was incorrect<br>", $error_array)) echo "Email or password was incorrect"; ?>
+                    <?php if(in_array("Email or password was incorrect<br>", $error_array)) echo "Email or password was incorrect<br>"; ?>
                     
                     <input type="submit" name="login_button" value="Login">
                     <br>
