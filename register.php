@@ -40,9 +40,19 @@
         $date = date("Y-m-d");
 
         if($email == $email2) {
-            // Check if emails in valid format
+            // Check if email in valid format
             if(filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 $email = filter_var($email, FILTER_VALIDATE_EMAIL);
+
+                // Check if email exists
+                $email_check = mysqli_query($con, "SELECT email FROM users WHERE email='$email'");
+
+                // Count number of rows returned
+                $num_rows = $email_check->num_rows;
+
+                if ($num_rows > 0) {
+                    echo "Email already in use";
+                }
             }
             else {
                 echo "Invalid format";
