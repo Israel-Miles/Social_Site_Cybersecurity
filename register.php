@@ -1,3 +1,47 @@
+<?php
+    $con = mysqli_connect("localhost", "root", "", "social");
+    
+    if(mysqli_connect_errno()) {
+        echo "Failed to connect: " . mysqli_connect_errno();
+    }
+
+    // Declaring variables to prevent errors
+    $first_name = "";
+    $last_name = "";
+    $email = "";
+    $email2 = "";
+    $password = "";
+    $password2 = "";
+    $signup_date = "";
+    $error_array = "";
+
+    if(isset($_POST['register_button'])){
+
+        // TODO: add strip_tags() for enhanced security (removes html tags)
+        $first_name = $_POST['reg_fname'];
+        $first_name = str_replace(' ', '', $first_name);
+        $first_name = ucfirst(strtolower($first_name)); // Uppercase first letter
+
+        $last_name = $_POST['reg_lname'];
+        $last_name = str_replace(' ', '', $last_name);
+        $last_name = ucfirst(strtolower($last_name));
+
+        $email = $_POST['reg_email'];
+        $email = str_replace(' ', '', $email);
+        $email = ucfirst(strtolower($email));
+
+        $email2 = $_POST['reg_email2'];
+        $email2 = str_replace(' ', '', $email2);
+        $email2 = ucfirst(strtolower($email2));
+
+        $password = $_POST['reg_password'];
+        $password2 = $_POST['reg_password2'];
+
+        $date = date("Y-m-d");
+    }
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
