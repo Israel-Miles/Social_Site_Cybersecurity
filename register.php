@@ -102,6 +102,13 @@
                 $username = $username . "_" . $i;
                 $check_username_query = mysqli_query($con, "SELECT username FROM users WHERE username='$username'");
             }
+
+            $rand_num = rand(1,2);
+
+            if($rand_num == 1)
+                $profile_pic = "assets/images/profile_pics/defaults/corona.jpg";
+            else if($rand_num == 2)
+                $profile_pic = "assets/images/profile_pics/defaults/trump.jpg";
         }
     }
 ?>
