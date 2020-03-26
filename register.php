@@ -109,6 +109,8 @@
                 $profile_pic = "assets/images/profile_pics/defaults/corona.jpg";
             else if($rand_num == 2)
                 $profile_pic = "assets/images/profile_pics/defaults/trump.jpg";
+
+            $query = mysqli_query($con, "INSERT INTO users VALUES ('', '$first_name', '$last_name', '$username', '$email', '$password', '$date', '$profile_pic', '0', '0', 'no', ',')");
         }
     }
 ?>
