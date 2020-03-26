@@ -10,7 +10,7 @@
 
 body {
     line-height: 17px;
-    background-color: grey;
+    background-color: rgb(170, 170, 170);
 }
 
 .top_bar {
@@ -78,4 +78,16 @@ nav a:hover {
     width: 250px;
     float: left;
     margin: 60px 10%;
+}
+
+.user_details_left_right {
+    width: 125px;
+    display: inline-block;
+    position: absolute;
+}
+
+.user_details img {
+    height: 125px;
+    border-radius: 5px;
+    margin: 5px;
 }
