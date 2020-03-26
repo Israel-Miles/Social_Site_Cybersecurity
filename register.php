@@ -87,6 +87,22 @@
         if(strlen($password) > 30 || strlen($password) < 5) {
             array_push($error_array, "Your password must be between 5 and 30 characters<br>");
         }
+
+        if(empty($error_array)) {
+            $password = md5($password); // Encrypt password
+
+            // Generate username
+            $username = strtolower($first_name . "_" . $last_name);
+            $check_username_query = mysqli_query($con, "SELECT username FROM users WHERE username='$username");
+
+            $i = 0;
+            // if username exists add number to username
+            while($check_username_query->num_rows != 0) {
+                $i++;
+                $username = $username . "_" . $i;
+                $check_username_query = mysqli_query($con, "SELECT username FROM users WHERE username='$username'");
+            }
+        }
     }
 ?>
 
