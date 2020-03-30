@@ -56,4 +56,5 @@
         </nav>
     </div>
 
-    <div class="wrapper">
+    <div class="wrapper container">
+        <div class="row">

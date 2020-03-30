@@ -77,7 +77,7 @@ nav a:hover {
 .user_details {
     width: 300px;
     float: left;
-    margin: 60px 0 10px 150px;
+    margin: 60px 0 10px 0;
     font-size: 20px;
 }
 
@@ -97,11 +97,12 @@ nav a:hover {
 .main_column {
     background-color: white;
     float: right;
-    width: 60%;
+    width: 70%;
+    min-width: 200px;
     z-index: -1;
     min-height: 160px;
     margin-top: 60px;
-    margin-right: 150px;
+    margin-left: 30px;
 }
 
 .post_form {
@@ -124,7 +125,8 @@ textarea:focus {
 }
 
 .post_form input[type="submit"] {
-    width: 10%;
+    width: 5%;
+    min-width: 100px;
     height: 70px;
     border: none;
     border-radius: 3px;
@@ -136,6 +138,7 @@ textarea:focus {
     position: absolute;
     outline: 0;
     margin: 0;
+    margin-right: 10px;
 }
 
 .post_form input[type="submit"]:active {
