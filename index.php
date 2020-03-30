@@ -2,11 +2,13 @@
     include("includes/header.php");
     // session_destroy();
 ?>
+
+
         <div class="user_details column">
-            <a href="#"><img src="<?php echo $user['profile_pic']; ?>" alt=""></a>
+            <a href="<?php echo $user_logged_in; ?>"><img src="<?php echo $user['profile_pic']; ?>" alt=""></a>
 
             <div class="user_details_left_right">
-                <a href="#">
+                <a href="<?php echo $user_logged_in; ?>">
                     <?php 
                         echo $user['first_name'] . " " . $user['last_name'];
                     ?>

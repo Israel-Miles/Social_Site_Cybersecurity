@@ -35,7 +35,7 @@
         </div>
 
         <nav>
-            <a href="#">
+            <a href="<?php echo $user_logged_in; ?>">
                 <?php echo $user['first_name']; ?>
             </a>
             <a href="index.php">
@@ -55,3 +55,5 @@
             </a>
         </nav>
     </div>
+
+    <div class="wrapper">
