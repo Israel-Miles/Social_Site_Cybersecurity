@@ -7,6 +7,7 @@
     if(isset($_POST['post'])) {
         $post = new Post($con, $user_logged_in);
         $post->submitPost($_POST['post_text'], 'none');
+        header("Location: index.php");
     }
 ?>
 
