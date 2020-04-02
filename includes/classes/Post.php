@@ -37,5 +37,26 @@
                 
             }
         }
+
+        public function loadPostFriends() {
+            $str = "";
+            $data = mysqli_query($this->con, "SELECT * FROM posts WHERE deleted='no' ORDER BY id DESC");
+
+            while($row = mysqli_fetch_array($data)) {
+                $id = $row['id'];
+                $body = $row['body'];
+                $added_by = $row['added_by'];
+                $date_time = $row['date_added'];
+
+                if($row['user_to'] == "none") {
+                    $user_to = "";
+                }
+                else {
+                    $user_to_obj = new User($con, $row['user_to']);
+                    $user_to_name = $user_to_obj->getFirstAndLastName();
+                    $user_to = "<a href='" . $row['user_to'] . "'>" . $user_to_name . "</a>";
+                }
+            }
+        }
     }
 ?>
