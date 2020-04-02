@@ -36,6 +36,11 @@
                     <input type="submit" name="post" id="post_button" value="Post">
                     <hr>
                 </form>
+
+                <?php
+                    $post = new Post($con, $user_logged_in);
+                    $post->loadPostsFriends();
+                ?>
             </div>
         </div>
     </div>
