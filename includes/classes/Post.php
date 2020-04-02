@@ -12,6 +12,11 @@
             // TODO: add strip_tags() to remove html tags
             $body = $body;
             $body = mysqli_real_escape_string($this->con, $body);
+
+            // Allow line breaks in posts
+            $body = str_replace('\r\n', '\n', $body);
+            $body = nl2br($body)
+
             $check_empty = preg_replace('/\s+/', '', $body); // Delete all spaces
 
             if($check_empty != "") {
