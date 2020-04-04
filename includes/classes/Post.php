@@ -148,6 +148,7 @@
                             <br>
                         </div>
                     </div>
+                    <hr>
                 ";
             }
             echo $str;
