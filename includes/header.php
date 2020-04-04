@@ -2,8 +2,8 @@
     require 'config/config.php';
 
     if (isset($_SESSION['username'])) {
-        $user_logged_in = $_SESSION['username'];
-        $user_details_query = mysqli_query($con, "SELECT * FROM users WHERE username='$user_logged_in'");
+        $userLoggedIn = $_SESSION['username'];
+        $user_details_query = mysqli_query($con, "SELECT * FROM users WHERE username='$userLoggedIn'");
         $user = mysqli_fetch_array($user_details_query);
     }
     else {
@@ -35,7 +35,7 @@
         </div>
 
         <nav>
-            <a href="<?php echo $user_logged_in; ?>">
+            <a href="<?php echo $userLoggedIn; ?>">
                 <?php echo $user['first_name']; ?>
             </a>
             <a href="index.php">

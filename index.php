@@ -5,18 +5,18 @@
     // session_destroy();
 
     if(isset($_POST['post'])) {
-        $post = new Post($con, $user_logged_in);
+        $post = new Post($con, $userLoggedIn);
         $post->submitPost($_POST['post_text'], 'none');
-        header("Location: index.php");
+        // header("Location: index.php");
     }
 ?>
 
 
             <div class="user_details .col-md-4 column">
-                <a href="<?php echo $user_logged_in; ?>"><img src="<?php echo $user['profile_pic']; ?>" alt=""></a>
+                <a href="<?php echo $userLoggedIn; ?>"><img src="<?php echo $user['profile_pic']; ?>" alt=""></a>
 
                 <div class="user_details_left_right">
-                    <a href="<?php echo $user_logged_in; ?>">
+                    <a href="<?php echo $userLoggedIn; ?>">
                         <?php 
                             echo $user['first_name'] . " " . $user['last_name'];
                         ?>
@@ -37,11 +37,63 @@
                     <hr>
                 </form>
 
-                <?php
-                    $post = new Post($con, $user_logged_in);
-                    $post->loadPostsFriends();
-                ?>
+                <div class="posts_area"></div>
+		        <img id="loading" src="assets/images/icons/Spinner-1s-250px.gif">
             </div>
+
+            <script>
+                var userLoggedIn = '<?php echo $userLoggedIn; ?>';
+
+                $(document).ready(function() {
+
+                    $('#loading').show();
+
+                    //Original ajax request for loading first posts 
+                    $.ajax({
+                        url: "includes/handlers/ajax_load_posts.php",
+                        type: "POST",
+                        data: "page=1&userLoggedIn=" + userLoggedIn,
+                        cache:false,
+
+                        success: function(data) {
+                            $('#loading').hide();
+                            $('.posts_area').html(data);
+                        }
+                    });
+
+                    $(window).scroll(function() {
+                        var height = $('.posts_area').height(); //Div containing posts
+                        var scroll_top = $(this).scrollTop();
+                        var page = $('.posts_area').find('.nextPage').val();
+                        var noMorePosts = $('.posts_area').find('.noMorePosts').val();
+
+                        if ((document.body.scrollHeight == document.body.scrollTop + window.innerHeight) && noMorePosts == 'false') {
+                            $('#loading').show();
+
+                            var ajaxReq = $.ajax({
+                                url: "includes/handlers/ajax_load_posts.php",
+                                type: "POST",
+                                data: "page=" + page + "&userLoggedIn=" + userLoggedIn,
+                                cache: false,
+
+                                success: function(response) {
+                                    $('.posts_area').find('.nextPage').remove(); //Removes current .nextpage 
+                                    $('.posts_area').find('.noMorePosts').remove(); //Removes current .nextpage 
+
+                                    $('#loading').hide();
+                                    $('.posts_area').append(response);
+                                },
+                                error: function () {
+                                    console.log(path, arguments)
+                                }
+                            });
+                        }
+
+                        return false;
+
+                    }); //End (window).scroll(function())
+                });
+            </script>
         </div>
     </div>
 </body>
